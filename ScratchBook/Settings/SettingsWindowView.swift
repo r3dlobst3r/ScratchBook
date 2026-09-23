@@ -10,6 +10,7 @@ import SwiftUI
 struct SettingsWindowView: View {
     @EnvironmentObject private var settingsModel: SettingsModel
     @EnvironmentObject var storageLocationModel: StorageLocationModel
+    @EnvironmentObject private var themeModel: ThemeModel
     
     @FocusState private var transTextfieldIsFocused: Bool
     
@@ -17,6 +18,14 @@ struct SettingsWindowView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 30) {
+            Group {
+                HStack(alignment: .top, spacing: 15) {
+                    Text("Theme:")
+                        .frame(width: labelColumnWidth, alignment: .trailing)
+                    
+                    ThemePicker()
+                }
+            }
             Group {
                 HStack(alignment: .top, spacing: 15) {
                     Text("Window Transparency:")

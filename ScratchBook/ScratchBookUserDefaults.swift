@@ -19,4 +19,5 @@ final class ScratchBookUserDefaults {
     static let floatAboveOtherWindows = "floatAboveOtherWindows"
     static let openWelcomeSheetOnLaunch = "openWelcomeSheetOnLaunch"
     static let pageNumber = "pageNumber"
+    static let themeID = "themeID"
 }

@@ -10,10 +10,14 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var noteModel: NoteModel
     @EnvironmentObject var commandsModel: CommandsModel
+    @EnvironmentObject var themeModel: ThemeModel
     
     var body: some View {
         RichTextEditor()
             .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(themeModel.theme?.background.color ?? Color(nsColor: .textBackgroundColor))
+            .tint(themeModel.theme?.accent.color)
+            .themedWindowToolbar(themeModel.theme)
             .toolbar {
                 Toolbar()
             }

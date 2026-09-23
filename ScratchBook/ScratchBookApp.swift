@@ -18,6 +18,13 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         
         let floatAboveOtherWindows = ScratchBookUserDefaults.defaults.bool(forKey: ScratchBookUserDefaults.floatAboveOtherWindows)
         NSApp.windows.first?.level = floatAboveOtherWindows ? .popUpMenu : .normal
+        
+        // Apply the saved theme's appearance before the first window is shown. This
+        // covers the Settings window and any sheets as well, since they inherit from
+        // the application appearance.
+        let themeID = ScratchBookUserDefaults.defaults.string(forKey: ScratchBookUserDefaults.themeID)
+            ?? Theme.systemDefaultID
+        NSApp.appearance = ThemeModel.forcedAppearance(forThemeID: themeID)
     }
 
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
@@ -33,6 +40,7 @@ struct ScratchBookApp: App {
     @ObservedObject private var settingsModel: SettingsModel
     @ObservedObject private var noteModel: NoteModel
     @ObservedObject private var commandsModel: CommandsModel
+    @ObservedObject private var themeModel: ThemeModel
     
     @State private var importScreenOpen = false
     
@@ -43,6 +51,7 @@ struct ScratchBookApp: App {
         _settingsModel = ObservedObject(wrappedValue: SettingsModel(storageLocationModel: storageLocationModel))
         _noteModel = ObservedObject(wrappedValue: NoteModel(storageLocationModel: storageLocationModel))
         _commandsModel = ObservedObject(wrappedValue: CommandsModel())
+        _themeModel = ObservedObject(wrappedValue: ThemeModel())
     }
     
     var body: some Scene {
@@ -52,6 +61,7 @@ struct ScratchBookApp: App {
                 .environmentObject(noteModel)
                 .environmentObject(settingsModel)
                 .environmentObject(commandsModel)
+                .environmentObject(themeModel)
         }
         .defaultSize(width: 600, height: 700)
         .commands {
@@ -115,6 +125,32 @@ struct ScratchBookApp: App {
             TextFormattingCommands()
             ToolbarCommands()
 
+            CommandGroup(after: .toolbar) {
+                Menu("Theme") {
+                    Picker("Theme", selection: $themeModel.selectedThemeID) {
+                        Text("System Default", comment: "Theme picker entry that follows the macOS appearance")
+                            .tag(Theme.systemDefaultID)
+
+                        Section(String(localized: "Built-in")) {
+                            ForEach(BuiltInThemes.all) { theme in
+                                Text(theme.name).tag(theme.id)
+                            }
+                        }
+
+                        if !themeModel.importedThemes.isEmpty {
+                            Section(String(localized: "Imported")) {
+                                ForEach(themeModel.importedThemes) { theme in
+                                    Text(theme.name).tag(theme.id)
+                                }
+                            }
+                        }
+                    }
+                    .pickerStyle(.inline)
+                    .labelsHidden()
+                }
+
+                Divider()
+            }
             CommandGroup(after: .textFormatting) {
                 Divider()
                 Button("Reset Formatting", systemImage: "eraser") {
@@ -129,6 +165,7 @@ struct ScratchBookApp: App {
                 .fixedSize()
                 .environmentObject(settingsModel)
                 .environmentObject(storageLocationModel)
+                .environmentObject(themeModel)
         }
     }
 }

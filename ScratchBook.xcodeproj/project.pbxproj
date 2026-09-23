@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4982D51530642939000C54F2 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4982D51430642939000C54F2 /* Theme.swift */; };
+		4982D51730642944000C54F2 /* BuiltInThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4982D51630642944000C54F2 /* BuiltInThemes.swift */; };
+		4982D51930642960000C54F2 /* ThemeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4982D51830642960000C54F2 /* ThemeModel.swift */; };
+		4982D51B30642967000C54F2 /* ThemePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4982D51A30642967000C54F2 /* ThemePicker.swift */; };
+		4982D51D30642A90000C54F2 /* TextThemeApplicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4982D51C30642A90000C54F2 /* TextThemeApplicator.swift */; };
 		932C66D52F4C4DA000B198E8 /* ScratchBookUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932C66D42F4C4D9E00B198E8 /* ScratchBookUserDefaults.swift */; };
 		9356ECCE2F489EB400EA4C62 /* RichTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9356ECCD2F489EB400EA4C62 /* RichTextEditor.swift */; };
 		9356ECD02F48A72C00EA4C62 /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 9356ECCF2F48A72C00EA4C62 /* AppIcon.icon */; };
@@ -28,6 +33,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4982D51430642939000C54F2 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		4982D51630642944000C54F2 /* BuiltInThemes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuiltInThemes.swift; sourceTree = "<group>"; };
+		4982D51830642960000C54F2 /* ThemeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeModel.swift; sourceTree = "<group>"; };
+		4982D51A30642967000C54F2 /* ThemePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemePicker.swift; sourceTree = "<group>"; };
+		4982D51C30642A90000C54F2 /* TextThemeApplicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextThemeApplicator.swift; sourceTree = "<group>"; };
 		932C66D42F4C4D9E00B198E8 /* ScratchBookUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScratchBookUserDefaults.swift; sourceTree = "<group>"; };
 		9356ECCD2F489EB400EA4C62 /* RichTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RichTextEditor.swift; sourceTree = "<group>"; };
 		9356ECCF2F48A72C00EA4C62 /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
@@ -62,6 +72,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4982D51330642939000C54F2 /* Themes */ = {
+			isa = PBXGroup;
+			children = (
+				4982D51430642939000C54F2 /* Theme.swift */,
+				4982D51630642944000C54F2 /* BuiltInThemes.swift */,
+				4982D51830642960000C54F2 /* ThemeModel.swift */,
+				4982D51A30642967000C54F2 /* ThemePicker.swift */,
+				4982D51C30642A90000C54F2 /* TextThemeApplicator.swift */,
+			);
+			path = Themes;
+			sourceTree = "<group>";
+		};
 		93FE2E7529433D7900C07F70 = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +118,7 @@
 				93FE2E8729433D7B00C07F70 /* Preview Content */,
 				9356ECCF2F48A72C00EA4C62 /* AppIcon.icon */,
 				93CCA3712F4A13A700D07448 /* Info.plist */,
+				4982D51330642939000C54F2 /* Themes */,
 			);
 			path = ScratchBook;
 			sourceTree = "<group>";
@@ -232,16 +255,21 @@
 			files = (
 				93FE2EA72944959D00C07F70 /* ErrorHandling.swift in Sources */,
 				93FE2EB4294541BA00C07F70 /* CommandsModel.swift in Sources */,
+				4982D51D30642A90000C54F2 /* TextThemeApplicator.swift in Sources */,
 				93FE2E9E29434C5E00C07F70 /* SettingsModel.swift in Sources */,
+				4982D51B30642967000C54F2 /* ThemePicker.swift in Sources */,
 				93FE2E952943415C00C07F70 /* NoteModel.swift in Sources */,
 				93FE2E9129433E9A00C07F70 /* Toolbar.swift in Sources */,
 				93FE2EBF29465BEA00C07F70 /* WelcomeSheet.swift in Sources */,
 				9356ECCE2F489EB400EA4C62 /* RichTextEditor.swift in Sources */,
 				93FE2EAC2944F66400C07F70 /* ImportView.swift in Sources */,
 				93FE2EA92944A19B00C07F70 /* NoteManager.swift in Sources */,
+				4982D51930642960000C54F2 /* ThemeModel.swift in Sources */,
 				93FE2E8429433D7900C07F70 /* ContentView.swift in Sources */,
 				93CCA3702F49D9AA00D07448 /* StorageLocationModel.swift in Sources */,
+				4982D51730642944000C54F2 /* BuiltInThemes.swift in Sources */,
 				93FE2E8229433D7900C07F70 /* ScratchBookApp.swift in Sources */,
+				4982D51530642939000C54F2 /* Theme.swift in Sources */,
 				932C66D52F4C4DA000B198E8 /* ScratchBookUserDefaults.swift in Sources */,
 				93FE2E9C29434C1D00C07F70 /* SettingsWindowView.swift in Sources */,
 			);
